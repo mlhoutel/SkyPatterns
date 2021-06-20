@@ -1,6 +1,6 @@
 const datasets = function (app, fs) {
   const file = require('./file.js')
-  const pathDatasets = './datasets/'
+  const pathDatasets = __dirname + '/../datasets/'
   const dataExtention = 'dat'
 
   app.get('/datasets', (req, res) => {

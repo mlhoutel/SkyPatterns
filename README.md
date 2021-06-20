@@ -1,5 +1,52 @@
-# SkyPatterns
-# Projet des FIL A1 LHOUTELLIER Maël, GROS Alexis et SIMON Géraud
+# Skypatterns
 
-# Le projet doit avoir encore quelques modifications pour être utilisé complétement, et sera transmis par Git au professeur, Samir Loudni.
-# Actuellement, l'exe ne fonctionne que sous Windows, une version Linux sera ajoutée ultérieurement
+Projet FIL A1 - IMT Atlantique
+Auteurs: LHOUTELLIER Maël, GROS Alexis et SIMON Géraud
+Sous la supervision de Samir Loudni
+
+
+## Project setup
+
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+
+```
+npm run build
+```
+
+### Compiles electron app for development
+
+```
+npm run electron:serve
+```
+
+### Compiles electron app for production
+
+```
+npm run electron:build
+```
+
+### Lints and fixes files
+
+```
+npm run lint
+```
+
+### Lints and fixes files
+
+```
+npm run lint
+```
+
+### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).

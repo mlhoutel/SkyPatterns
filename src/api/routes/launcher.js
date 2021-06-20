@@ -1,6 +1,6 @@
 const launcher = function (app, fs) {
   const file = require('./file.js')
-  const pathJar = './'
+  const pathJar = __dirname + '/../'
 
   const update_status = function (name, status) {
     file.readFile(fs, function (data) {

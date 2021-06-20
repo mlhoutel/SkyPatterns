@@ -1,4 +1,4 @@
-const dataPath = './data/status.json'
+const dataPath = __dirname + '/../data/status.json'
 module.exports = {
   readFile: function (fs, callback = () => {}, returnJson = false, filePath = dataPath, encoding = 'utf8') {
     fs.readFile(filePath, encoding, function (err, data) {
