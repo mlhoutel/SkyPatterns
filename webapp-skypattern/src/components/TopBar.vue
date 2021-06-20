@@ -1,7 +1,10 @@
 <template>
   <v-container>
     <v-app-bar app color="primary" dark dense height="50px">
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = true" width="100px">
+        <v-icon> $menu </v-icon>
+        <div class="px-1">MENU</div>
+      </v-app-bar-nav-icon>
 
       <v-spacer></v-spacer>
 
@@ -16,13 +19,13 @@
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Liste d'analyses</v-list-item-title>
+            <v-list-item-title>Analysis list</v-list-item-title>
           </v-list-item>
           <v-list-item @click="goNouvelleAnalyse()">
             <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
+              <v-icon>mdi-plus</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Nouvelle analyse</v-list-item-title>
+            <v-list-item-title>New analysis</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

@@ -58,6 +58,12 @@
       </div>
 
       <div class="divBlock">
+        <h3>Constraints ( --cst )</h3>
+        <v-text-field v-model="constraintMinFreq" type="number" label="Minimum frequency (in %)" placeholder="1" min="0" max="100" @change="checkMinFrequency()" :disabled="!withPatternMeasureFrequency" />
+        <v-text-field v-model="constraintMinLength" type="number" label="Minimum lenght" placeholder="1" :disabled="cstLength" @change="checkMinLenght()" />
+      </div>
+
+      <div class="divBlock">
         <h3>Type of bitset ( --bst )</h3>
         <v-radio-group v-model="bitsetType">
           <v-radio type="radio" label="Sparse bitset" value="sparse" :disabled="patternSubcommand == 'cpsky'" />
@@ -69,11 +75,6 @@
       <div class="divBlock">
         <h3>Strategy to branch on item ( --str )</h3>
         <v-select v-model="strategyBranchSelect" :items="strategyBranchSelectItems" label="Strategy branch" />
-      </div>
-      <div class="divBlock">
-        <h3>Constraints ( --cst )</h3>
-        <v-text-field v-model="constraintMinFreq" type="number" label="Minimum frequency (in %)" placeholder="1" min="0" max="100" @change="checkMinFrequency()" :disabled="!withPatternMeasureFrequency" />
-        <v-text-field v-model="constraintMinLength" type="number" label="Minimum lenght" placeholder="1" :disabled="cstLength" @change="checkMinLenght()" />
       </div>
     </div>
 
