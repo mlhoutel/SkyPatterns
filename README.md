@@ -1,4 +1,9 @@
-# skypatterns
+# Skypatterns
+
+Projet FIL A1 - IMT Atlantique
+Auteurs: LHOUTELLIER Maël, GROS Alexis et SIMON Géraud
+Sous la supervision de Samir Loudni
+
 
 ## Project setup
 
