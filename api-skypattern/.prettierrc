@@ -1,9 +1,0 @@
-{
-  "trailingComma": "all",
-  "tabWidth": 2,
-  "semi": false,
-  "singleQuote": true,
-  "htmlWhitespaceSensitivity:": "ignore",
-  "printWidth": 170,
-  "endOfLine": "auto"
-}
