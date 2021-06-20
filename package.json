@@ -44,6 +44,8 @@
     "vue-cli-plugin-electron-builder": "~2.0.0",
     "vue-cli-plugin-vuetify": "~2.4.1",
     "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.7.0"
+    "vuetify-loader": "^1.7.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   }
 }
