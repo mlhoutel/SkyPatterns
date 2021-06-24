@@ -4,6 +4,7 @@ const appRouter = function (app, fs, port) {
   const statusRoutes = require('./status.js')
   const resultsRoutes = require('./results.js')
   const datasetsRoutes = require('./datasets.js')
+  const colorsRoutes = require('./colors.js')
 
   // Root
   app.get('/', (req, res) => {
@@ -22,6 +23,7 @@ const appRouter = function (app, fs, port) {
   statusRoutes(app, fs)
   resultsRoutes(app, fs)
   datasetsRoutes(app, fs)
+  colorsRoutes(app, fs)
 }
 
 module.exports = appRouter
