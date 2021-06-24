@@ -3,7 +3,7 @@
     <div id="dataSetFilter" class="divBlock">
       <h2>DataSet</h2>
       <h3 class="needed">Dataset's path ( -d )</h3>
-      <v-select v-model="dataSetPath" :items="datasets" />
+      <v-select v-model="dataSetPath" :items="datasets" @change="LoadNoClass()" />
 
       <h3>Choose dataSet format ( --dat )</h3>
 
@@ -12,7 +12,7 @@
         <v-radio type="radio" label="Transactionnal" value="Transactionnal" />
       </v-radio-group>
 
-      <v-checkbox v-model="dataSetClassTransaction" @click="checkNoClasses()" label="No classes ( --nc )" />
+      <v-checkbox v-model="dataSetClassTransaction" @click="checkNoClasses()" label="No classes ( --nc )" :disabled="!dataSetPath || datasetNoClass" />
     </div>
 
     <div id="patternFilter" class="divBlock">
@@ -100,6 +100,7 @@ export default {
   name: 'NouvelleAnalyse',
   data() {
     return {
+      datasetNoClass: true,
       datasets: [],
       dataSetFormat: 'Binary', // ?
       dataSetClassTransaction: false, // ?
@@ -128,6 +129,14 @@ export default {
     }
   },
   methods: {
+    async LoadNoClass() {
+      await ApiSkyppattern.get(`/datasets/${this.dataSetPath}/noclasses`).then((response) => {
+        this.datasetNoClass = response.data.noclasses
+        if (this.datasetNoClass) {
+          this.noclasses = true
+        }
+      })
+    },
     onMeasureLenght() {
       if (!this.withPatternMeasureLength) {
         this.constraintMinLength = ''
@@ -298,6 +307,7 @@ export default {
     this.refreshDatasets().then(() => {
       if (this.datasets[0]) {
         this.dataSetPath = this.datasets[0] // initialise avec une valeur
+        this.LoadNoClass()
       }
     })
   },

@@ -1,0 +1,58 @@
+{
+  "chess": {
+    "noclasses": false,
+    "threshold": [0.3, 0.2, 0.1]
+  },
+  "hepatitis": {
+    "noclasses": false,
+    "threshold": [0.2, 0.1, 0.05]
+  },
+  "kr_vs_kp": {
+    "noclasses": false,
+    "threshold": [0.3, 0.2]
+  },
+  "connect": {
+    "noclasses": false,
+    "threshold": [0.18, 0.15, 0.1]
+  },
+  "heart_cleveland": {
+    "noclasses": false,
+    "threshold": [0.1, 0.08, 0.06]
+  },
+  "splice1": {
+    "noclasses": false,
+    "threshold": [0.1, 0.05, 0.02]
+  },
+  "mushroom": {
+    "noclasses": false,
+    "threshold": [0.01, 0.008, 0.005]
+  },
+  "t40": {
+    "noclasses": true,
+    "threshold": [0.08, 0.05, 0.01]
+  },
+  "pumsb": {
+    "noclasses": false,
+    "threshold": [0.8, 0.7]
+  },
+  "t10": {
+    "noclasses": true,
+    "threshold": [0.005, 0.0025]
+  },
+  "bms1": {
+    "noclasses": true,
+    "threshold": [0.001, 0.0005]
+  },
+  "retail": {
+    "noclasses": true,
+    "threshold": [0.004, 0.002]
+  },
+  "iris": {
+    "classes": false,
+    "threshold": [0.02, 0.01]
+  },
+  "zoo": {
+    "noclasses": false,
+    "threshold": [0.02, 0.01]
+  }
+}
