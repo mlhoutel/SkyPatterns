@@ -38,9 +38,9 @@
         <div>
           <v-row>
             <v-col cols="auto"><v-checkbox v-model="withPatternMeasureFrequency" label="Frequency ( f )" :disabled="true" /></v-col>
-            <v-col cols="auto"><v-checkbox @change="checkCstLength()" v-model="withPatternMeasureLength" label="Length ( l )" @click="onMeasureLenght()" /></v-col>
-            <v-col cols="auto"><v-checkbox v-model="withPatternMeasureArea" label="Area ( a )" /></v-col>
-            <v-col cols="auto"><v-checkbox v-model="withPatternMeasureGrowthRate" label="Growth-rate ( g )" :disabled="dataSetClassTransaction" /></v-col>
+            <v-col cols="auto"><v-checkbox @change="checkCstLength()" v-model="withPatternMeasureLength" :disabled="patternType == 'closed'" label="Length ( l )" @click="onMeasureLenght()" /></v-col>
+            <v-col cols="auto"><v-checkbox v-model="withPatternMeasureArea" label="Area ( a )" :disabled="patternType == 'closed'" /></v-col>
+            <v-col cols="auto"><v-checkbox v-model="withPatternMeasureGrowthRate" label="Growth-rate ( g )" :disabled="dataSetClassTransaction || patternType == 'closed'" /></v-col>
           </v-row>
         </div>
       </div>
@@ -51,8 +51,8 @@
           <v-row>
             <v-col cols="auto"><v-checkbox v-model="attributeMeasureMin" label="Min ( m )" /></v-col>
             <v-col cols="auto"><v-checkbox v-model="attributeMeasureMax" label="Max ( M )" /></v-col>
-            <v-col cols="auto"><v-checkbox v-model="attributeMeasureMean" label="Mean ( n )" /></v-col>
-            <v-col cols="auto"><v-checkbox v-model="attributeMeasureSum" label="Sum ( u )" /></v-col>
+            <v-col cols="auto"><v-checkbox v-model="attributeMeasureMean" :disabled="patternType == 'closed'" label="Mean ( n )" /></v-col>
+            <v-col cols="auto"><v-checkbox v-model="attributeMeasureSum" :disabled="patternType == 'closed'" label="Sum ( u )" /></v-col>
           </v-row>
         </div>
       </div>
@@ -164,6 +164,9 @@ export default {
     },
     checkClosedAttributeMeasure() {
       if (this.patternType == 'closed') {
+        this.withPatternMeasureArea = false
+        this.withPatternMeasureLength = false
+        this.withPatternMeasureGrowthRate = false
         this.attributeMeasureMean = false
         this.attributeMeasureSum = false
       }
