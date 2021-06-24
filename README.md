@@ -84,13 +84,15 @@ Api
 ```
 api
 ├───data
-│   ├─── status.json # Projects infos
-│   └─── colors.json # Colors for the graphs display
-├───datasets         # Input datasets
-├───results          # Outputs from skypattern.jar
-├───routes           # Api code
-├───index.js         # Entry point (run with: node index.js)
-├───skyppatern.jar   # Data mining program
+│   └─── status.json    # Projects infos
+├───config
+│   ├─── noclasses.json # Datasets noclass
+│   └─── colors.json    # Colors for the graphs display
+├───datasets            # Input datasets
+├───results             # Outputs from skypattern.jar
+├───routes              # Api code
+├───index.js            # Entry point (run with: node index.js)
+├───skyppatern.jar      # Data mining program
 ```
 
 ### Compiled app
