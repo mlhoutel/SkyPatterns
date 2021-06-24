@@ -1,4 +1,8 @@
-# Skypattern Visualisation
+# Skypatterns
+
+Project FIL A1 - IMT Atlantique
+Authors: LHOUTELLIER Maël, GROS Alexis et SIMON Géraud
+Under the supervision of Samir Loudni
 
 ## Requirements
 
