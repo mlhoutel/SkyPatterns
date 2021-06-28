@@ -3,7 +3,7 @@
     <div id="dataSetFilter" class="divBlock">
       <h2>DataSet</h2>
       <h3 class="needed">Dataset's path ( -d )</h3>
-      <v-select v-model="dataSetPath" :items="datasets" />
+      <v-select v-model="dataSetPath" :items="datasets" @change="LoadNoClass()" />
 
       <h3>Choose dataSet format ( --dat )</h3>
 
@@ -12,7 +12,7 @@
         <v-radio type="radio" label="Transactionnal" value="Transactionnal" />
       </v-radio-group>
 
-      <v-checkbox v-model="dataSetClassTransaction" @click="checkNoClasses()" label="No classes ( --nc )" />
+      <v-checkbox v-model="dataSetClassTransaction" @click="checkNoClasses()" label="No classes ( --nc )" :disabled="!dataSetPath || datasetNoClass" />
     </div>
 
     <div id="patternFilter" class="divBlock">
@@ -38,9 +38,9 @@
         <div>
           <v-row>
             <v-col cols="auto"><v-checkbox v-model="withPatternMeasureFrequency" label="Frequency ( f )" :disabled="true" /></v-col>
-            <v-col cols="auto"><v-checkbox @change="checkCstLength()" v-model="withPatternMeasureLength" label="Length ( l )" @click="onMeasureLenght()" /></v-col>
-            <v-col cols="auto"><v-checkbox v-model="withPatternMeasureArea" label="Area ( a )" /></v-col>
-            <v-col cols="auto"><v-checkbox v-model="withPatternMeasureGrowthRate" label="Growth-rate ( g )" :disabled="dataSetClassTransaction" /></v-col>
+            <v-col cols="auto"><v-checkbox @change="checkCstLength()" v-model="withPatternMeasureLength" :disabled="patternType == 'closed'" label="Length ( l )" @click="onMeasureLenght()" /></v-col>
+            <v-col cols="auto"><v-checkbox v-model="withPatternMeasureArea" label="Area ( a )" :disabled="patternType == 'closed'" /></v-col>
+            <v-col cols="auto"><v-checkbox v-model="withPatternMeasureGrowthRate" label="Growth-rate ( g )" :disabled="dataSetClassTransaction || patternType == 'closed'" /></v-col>
           </v-row>
         </div>
       </div>
@@ -51,8 +51,8 @@
           <v-row>
             <v-col cols="auto"><v-checkbox v-model="attributeMeasureMin" label="Min ( m )" /></v-col>
             <v-col cols="auto"><v-checkbox v-model="attributeMeasureMax" label="Max ( M )" /></v-col>
-            <v-col cols="auto"><v-checkbox v-model="attributeMeasureMean" label="Mean ( n )" /></v-col>
-            <v-col cols="auto"><v-checkbox v-model="attributeMeasureSum" label="Sum ( u )" /></v-col>
+            <v-col cols="auto"><v-checkbox v-model="attributeMeasureMean" :disabled="patternType == 'closed'" label="Mean ( n )" /></v-col>
+            <v-col cols="auto"><v-checkbox v-model="attributeMeasureSum" :disabled="patternType == 'closed'" label="Sum ( u )" /></v-col>
           </v-row>
         </div>
       </div>
@@ -100,6 +100,7 @@ export default {
   name: 'NouvelleAnalyse',
   data() {
     return {
+      datasetNoClass: true,
       datasets: [],
       dataSetFormat: 'Binary', // ?
       dataSetClassTransaction: false, // ?
@@ -128,6 +129,14 @@ export default {
     }
   },
   methods: {
+    async LoadNoClass() {
+      await ApiSkyppattern.get(`/datasets/${this.dataSetPath}/noclasses`).then((response) => {
+        this.datasetNoClass = response.data.noclasses
+        if (this.datasetNoClass) {
+          this.noclasses = true
+        }
+      })
+    },
     onMeasureLenght() {
       if (!this.withPatternMeasureLength) {
         this.constraintMinLength = ''
@@ -155,6 +164,9 @@ export default {
     },
     checkClosedAttributeMeasure() {
       if (this.patternType == 'closed') {
+        this.withPatternMeasureArea = false
+        this.withPatternMeasureLength = false
+        this.withPatternMeasureGrowthRate = false
         this.attributeMeasureMean = false
         this.attributeMeasureSum = false
       }
@@ -298,6 +310,7 @@ export default {
     this.refreshDatasets().then(() => {
       if (this.datasets[0]) {
         this.dataSetPath = this.datasets[0] // initialise avec une valeur
+        this.LoadNoClass()
       }
     })
   },

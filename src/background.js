@@ -36,7 +36,8 @@ async function createWindow() {
 
 function createBackgroundProcess() {
   console.log(__dirname)
-  const serverProcess = fork(path.join(path.dirname(__dirname), 'api', 'index.js'))
+  const apiPath = isDevelopment ? path.join(path.dirname(__dirname), 'dist_electron', 'win-unpacked', 'resources', 'api', 'index.js') : path.join(path.dirname(__dirname), 'api', 'index.js')
+  const serverProcess = fork(apiPath)
 
   serverProcess.on('message', (msg) => {
     console.log(msg)

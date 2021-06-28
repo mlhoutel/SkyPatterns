@@ -2,9 +2,21 @@
   <SplitPane :side="50" :onResize="onResize">
     <template v-slot:left>
       <div class="table-container">
-        <v-container fluid class="px-6 py-0" height="50px"><v-switch v-model="multiple" :label="multiple ? `Multiple` : `Simple`"></v-switch></v-container>
+        <v-container fluid class="px-6 py-0" height="50px">
+          <v-switch v-model="multiple" :label="`${multiple ? `Multiple` : `Simple`} - Displayed ${displayed} / ${max_displayed} Max`"></v-switch>
+        </v-container>
         <v-system-bar window dark color="blue darken-3" height="30">{{ data.title }}</v-system-bar>
-        <v-data-table fill-height :headers="getHeaders()" :items="data.datasets" v-model="selected" item-key="label" class="select-table" height="calc(100vh - 260px)" show-select>
+        <v-data-table
+          fill-height
+          :headers="getHeaders()"
+          :footer-props="{ itemsPerPageOptions: [10, 20, 30, 100] }"
+          :items="data.datasets"
+          v-model="selected"
+          item-key="label"
+          class="select-table"
+          height="calc(100vh - 260px)"
+          show-select
+        >
           <template v-slot:item="{ item, isSelected, select }">
             <tr :class="isSelected ? 'selected-row' : ''" @click="select(!isSelected)">
               <td><v-checkbox v-model="selected" :value="item" @click.native="select(!isSelected)" style="margin: 0px; padding: 0px" hide-details /></td>
@@ -28,19 +40,6 @@ import SplitPane from '@/components/SplitPane.vue'
 import RadarChart from '@/components/RadarChart.vue'
 import ApiSkyppattern from '@/services/http/api-skypattern'
 
-const colors = [
-  'rgba(120, 120, 230, 0.3)', // bleu
-  'rgba(255, 0, 0, 0.3)', // jaune
-  'rgba(50, 190, 50, 0.3)',
-  'rgba(186, 220, 88, 0.6)',
-  'rgba(104, 109, 224, 0.6)',
-  'rgba(48, 51, 107, 0.6)',
-  'rgba(126, 214, 223, 0.6)',
-  'rgba(249, 202, 36, 0.6)',
-  'rgba(235, 77, 75, 0.6)',
-  'rgba(223, 249, 251, 0.6)',
-]
-
 export default {
   name: 'Visualisation',
   components: { SplitPane, RadarChart },
@@ -48,11 +47,14 @@ export default {
     return {
       multiple: false,
       selected: [],
+      displayed: 0,
+      max_displayed: 50,
       data: {
         title: '',
         labels: [],
         datasets: [],
       },
+      colors: ['rgba(120, 120, 230, 0.3)', 'rgba(255, 0, 0, 0.3)', 'rgba(50, 190, 50, 0.3)'],
     }
   },
   methods: {
@@ -81,8 +83,11 @@ export default {
       })
     },
     getDatasets: function () {
-      const datasets = this.selected.map((e, i) => {
-        return { label: e.label || `Dataset ${i + 1}`, data: e.rdata, backgroundColor: colors[i % colors.length] } // Copie l'objet sans modifier l'original
+      const size = Math.min(this.max_displayed, this.selected.length)
+      this.displayed = size
+
+      const datasets = this.selected.slice(0, size).map((e, i) => {
+        return { label: e.label || `Dataset ${i + 1}`, data: e.rdata, backgroundColor: this.colors[i % this.colors.length] } // Copie l'objet sans modifier l'original
       })
 
       if (this.multiple) {
@@ -110,6 +115,12 @@ export default {
       this.data.datasets = response.data.dataset
 
       console.log(this.data)
+    })
+
+    ApiSkyppattern.get(`/colors`).then((response) => {
+      if (response.data) {
+        this.colors = response.data
+      }
     })
   },
 }
