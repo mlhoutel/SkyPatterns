@@ -47,6 +47,22 @@ Install the compiled Electron app as and .exe or compile it yourself
 
 Browse at https://sourceforge.net/projects/skypatterns/
 
+#### Windows
+
+Just run the .exe installer, and you're done!
+The app ressources will be stored in ```C:\Users\Username\AppData\Local\Programs\skypatterns\resources```
+
+#### Linux
+
+Download then install the package with snap
+
+```
+sudo apt install snap
+snap install skypatterns_0.7.5_amd64.snap --dangerous
+```
+
+The app ressources will be stored in ```/var/lib/snapd/snap/skypatterns/x1/resources```
+
 ### Compile the Electron app
 
 ```
