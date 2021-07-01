@@ -64,6 +64,11 @@
       "name": "aij_closedsky[f]_dat_tl86400_ptclosed",
       "status": "COMPLETE",
       "date": "2021-6-19"
+    },
+    {
+      "name": "aij_cpsky[f]_tl86400_ptsky",
+      "status": "STOPPED",
+      "date": "01/07/2021"
     }
   ]
 }
