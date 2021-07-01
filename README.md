@@ -1,6 +1,8 @@
 # Skypatterns
 
-
+<a href="https://github.com/IMT-FIL-2023/SkyPatterns/archive/refs/heads/main.zip" alt="Download Sources">
+  <img src="https://img.shields.io/badge/download-Sources-green" />
+</a>
 <a href="https://sourceforge.net/projects/skypatterns/files/skypatterns_lin_amd64_v0.7.5.snap/download" alt="Download for Linux">
   <img src="https://img.shields.io/badge/download-Linux-yellow" />
 </a>
@@ -8,9 +10,10 @@
   <img src="https://img.shields.io/badge/download-Windows-blue" />
 </a>
 
-Project FIL A1 - IMT Atlantique
 
-Authors: LHOUTELLIER Maël, GROS Alexis and SIMON Géraud
+**Project FIL A1 - IMT Atlantique**
+
+**Authors:** LHOUTELLIER Maël, GROS Alexis and SIMON Géraud
 
 Under the supervision of Samir Loudni
 
