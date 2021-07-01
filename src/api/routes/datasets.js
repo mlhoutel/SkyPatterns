@@ -3,7 +3,7 @@ const datasets = function (app, fs) {
   const pathDatasets = __dirname + '/../datasets/'
   const dataExtention = 'dat'
 
-  const noClassesPath = './config/noclasses.json'
+  const noClassesPath = __dirname + '/../config/noclasses.json'
 
   app.get('/datasets', (req, res) => {
     fs.readdir(pathDatasets, (err, files) => {
