@@ -1,6 +1,6 @@
 const launcher = function (app, fs) {
+  const path = require('path')
   const file = require('./file.js')
-  const pathJar = __dirname + '/../'
 
   const update_status = function (name, status) {
     file.readFile(fs, function (data) {
@@ -102,7 +102,8 @@ const launcher = function (app, fs) {
 
   const minimum_frequency = function (value, name) {
     // TODO => transformer le % en valeur absolue
-    fileBuffer = fs.readFileSync(`./datasets/${name}.dat`)
+
+    fileBuffer = fs.readFileSync(path.join(path.dirname(__dirname), 'datasets', `${name}.dat`))
     split_lines = fileBuffer.toString().split('\n')
     const count = split_lines.length - 1
     return Math.round(count * (value / 100))
@@ -121,7 +122,8 @@ const launcher = function (app, fs) {
     try {
       if ('path' in body) {
         name = body['path']
-        source = `-d datasets/${body['path']}.dat`
+        const datasetPath = path.join(path.dirname(__dirname), 'datasets', `${name}.dat`)
+        source = `-d ${datasetPath}`
       }
 
       if ('command' in body) {
@@ -205,16 +207,17 @@ const launcher = function (app, fs) {
         }
       }
 
-      // `java -jar ${pathJar}skypattern.jar`
-
+      const pathResults = path.join(path.dirname(__dirname), 'results', `${name}.json`)
+      const Pathjar = path.join(path.dirname(__dirname), 'skypattern.jar')
       // name += `_${parameters.join('_')}`.replace(/\s-/g, '') // remove whitespaces
-      parameters = [command, source, `--sp`, `--json results/${name}.json`, ...parameters]
+      parameters = [command, source, `--sp`, `--json ${pathResults}`, ...parameters]
 
-      console.log(`java -jar ${pathJar}skypattern.jar ${parameters.join(' ')}`)
+      const full_command = `java -jar ${Pathjar} ${parameters.join(' ')}`
+      console.log(full_command)
       console.log(parameters)
 
       update_status(name, 'ONGOING')
-      exec(`java -jar ${pathJar}skypattern.jar ${parameters.join(' ')}`, [], function (error, stdout, stderr) {
+      exec(full_command, [], function (error, stdout, stderr) {
         if (error) {
           console.error(stderr)
           update_status(name, 'STOPPED')

@@ -90,7 +90,7 @@ const results = function (app, fs) {
         res.json(returnedJSON)
       },
       true,
-      'results/' + id + '.json',
+      __dirname + '/../results/' + id + '.json',
     )
   })
 }
