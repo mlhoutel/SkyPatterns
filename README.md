@@ -2,7 +2,7 @@
 
 Project FIL A1 - IMT Atlantique
 
-Authors: LHOUTELLIER Maël, GROS Alexis et SIMON Géraud
+Authors: LHOUTELLIER Maël, GROS Alexis and SIMON Géraud
 
 Under the supervision of Samir Loudni
 
