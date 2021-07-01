@@ -47,6 +47,9 @@ Install the compiled Electron app as and .exe or compile it yourself
 
 Browse at https://sourceforge.net/projects/skypatterns/
 
+[Linux](https://sourceforge.net/projects/skypatterns/files/skypatterns_lin_amd64_v0.7.5.snap/download)
+[Windows](https://sourceforge.net/projects/skypatterns/files/skypatterns_win32_x64_v0.7.5.exe/download)
+
 #### Windows
 
 Just run the .exe installer, and you're done!
