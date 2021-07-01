@@ -6,6 +6,10 @@ Authors: LHOUTELLIER Maël, GROS Alexis and SIMON Géraud
 
 Under the supervision of Samir Loudni
 
+## User Guide
+
+https://github.com/IMT-FIL-2023/SkyPatterns/blob/main/docs/User%20guide.pdf
+
 ## Requirements
 
 - Java v12 or greater
