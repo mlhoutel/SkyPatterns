@@ -1,5 +1,13 @@
 # Skypatterns
 
+
+<a href="https://sourceforge.net/projects/skypatterns/files/skypatterns_lin_amd64_v0.7.5.snap/download" alt="Download for Linux">
+  <img src="https://img.shields.io/badge/download-Linux-yellow" />
+</a>
+<a href="https://sourceforge.net/projects/skypatterns/files/skypatterns_win32_x64_v0.7.5.exe/download" alt="Download for Windows">
+  <img src="https://img.shields.io/badge/download-Windows-blue" />
+</a>
+
 Project FIL A1 - IMT Atlantique
 
 Authors: LHOUTELLIER Maël, GROS Alexis and SIMON Géraud
@@ -46,9 +54,6 @@ Install the compiled Electron app as and .exe or compile it yourself
 ### Install the compiled app
 
 Browse at https://sourceforge.net/projects/skypatterns/
-
-[Linux](https://sourceforge.net/projects/skypatterns/files/skypatterns_lin_amd64_v0.7.5.snap/download)
-[Windows](https://sourceforge.net/projects/skypatterns/files/skypatterns_win32_x64_v0.7.5.exe/download)
 
 #### Windows
 
