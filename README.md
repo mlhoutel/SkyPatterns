@@ -9,7 +9,7 @@ Under the supervision of Samir Loudni
 ## Requirements
 
 - Java v12 or greater
-- NodeJS v14 or greater (for build or server deployement, included in the .exe)
+- NodeJS v14 or greater (for build or server deployment, included in the .exe)
 
 ## Run project locally
 
@@ -66,7 +66,7 @@ Webapp
 ```
 .
 ├───dist_electron       # Electron build
-├───node modules        # Installed dependancies
+├───node modules        # Installed dependencies
 ├───public              # Global ressources
 ├───src
 │   ├───api             # See [Api] below
