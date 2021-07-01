@@ -41,7 +41,7 @@ Install the compiled Electron app as and .exe or compile it yourself
 
 ### Install the compiled app
 
-TODO LINK
+Browse at https://sourceforge.net/projects/skypatterns/
 
 ### Compile the Electron app
 
