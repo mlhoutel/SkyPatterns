@@ -14,7 +14,7 @@ Under the supervision of Samir Loudni
 ## Run project locally
 
 ```
-npm install # Fetch dependancies
+npm install # Fetch dependencies
 ```
 
 ### Run with source code
@@ -46,7 +46,7 @@ Browse at https://sourceforge.net/projects/skypatterns/
 ### Compile the Electron app
 
 ```
-npm install # Fetch dependancies
+npm install # Fetch dependencies
 
 then
 
